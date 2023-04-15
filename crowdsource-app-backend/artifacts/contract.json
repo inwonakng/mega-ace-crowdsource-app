@@ -10,7 +10,7 @@
             "desc": "Deployes the contract and starts the application"
         },
         {
-            "name": "start_colleciton",
+            "name": "start_collection",
             "args": [],
             "returns": {
                 "type": "string"
@@ -18,12 +18,24 @@
             "desc": "Turn on the collection"
         },
         {
-            "name": "stop_colleciton",
+            "name": "stop_collection",
             "args": [],
             "returns": {
                 "type": "string"
             },
             "desc": "Turn off the collection"
+        },
+        {
+            "name": "submit_data",
+            "args": [
+                {
+                    "type": "string",
+                    "name": "new_data"
+                }
+            ],
+            "returns": {
+                "type": "string"
+            }
         },
         {
             "name": "is_open",
@@ -52,5 +64,6 @@
             }
         }
     ],
-    "networks": {}
+    "networks": {},
+    "desc": "App to crowdsource data collection using Algorand!"
 }
