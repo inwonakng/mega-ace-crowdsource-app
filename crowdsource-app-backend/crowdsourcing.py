@@ -31,33 +31,51 @@ app = beaker.Application("CrowdSourcingApp", state = CrowdSourcingAppState)
 @app.create
 def create():
     """Deployes the contract and starts the application"""
-    return pt.Seq(
-        app.initialize_global_state(),
-        # app.state.is_open.set(pt.TealType.uint64())
-    )
+    # return pt.Seq(
+    #     app.initialize_global_state(),
+    # )
+    return app.initialize_global_state()
 
 # Owner methods
 @app.external(authorize=beaker.Authorize.only_creator())
 def start_colleciton(*, output: pt.abi.String) -> pt.Expr:
     """Turn on the collection"""
-    return app.state.is_open.set(pt.Int(1))
+    return pt.Seq(
+        app.state.is_open.set(pt.Int(1)),
+        output.set("Successfully started collection")
+    )
 
 @app.external(authorize=beaker.Authorize.only_creator())
 def stop_colleciton(*, output: pt.abi.String) -> pt.Expr:
     """Turn off the collection"""
-    return app.state.is_open.set(pt.Int(0))
+    return pt.Seq(
+        app.state.is_open.set(pt.Int(0)),
+        output.set("Successfully stopped collection")
+    )
 
-# Write methods (from collaborator)
+# Write method
 @app.external
-def submit_data(data: pt.abi.String, *, output: pt.abi.Bool) -> pt.Expr:
+def submit_data(data: pt.abi.String, *, output: pt.abi.string) -> pt.Expr:
     return pt.Seq(
         (status := pt.abi.Uint8()).set(pt.Int(0)),
         (submitted_data := CrowdSourcedData()).set(status, data),
         app.state.collected_data[app.state.data_counter].set(submitted_data),
-        app.state.data_counter.set(app.state.data_counter + pt.Int(1))
+        app.state.data_counter.set(app.state.data_counter + pt.Int(1)),
+        output.set('Successfully submited data!')
     )
 
 # Read methods
 @app.external
-def get_data(index: pt.abi.Uint8, *, output: CrowdSourcedData) -> pt.Expr:
-    return app.state.collected_data[index].store_into(output)
+def is_open(*, output: pt.abi.Uint64) -> pt.Expr:
+    return output.set(app.state.is_open)
+
+@app.external
+def get_data(index: pt.abi.Uint64, *, output: CrowdSourcedData) -> pt.Expr:
+    return pt.Seq(
+        pt.Assert(app.state.data_counter > index.get()),
+        app.state.collected_data[index].store_into(output)
+    )
+
+@app.external
+def get_num_data(*, output: pt.abi.Uint64) -> pt.Expr:
+    return output.set(app.state.data_counter)

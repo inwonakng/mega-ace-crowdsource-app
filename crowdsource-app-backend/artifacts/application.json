@@ -1,0 +1,141 @@
+{
+    "hints": {
+        "create()void": {
+            "call_config": {
+                "no_op": "CREATE"
+            }
+        },
+        "start_colleciton()string": {
+            "call_config": {
+                "no_op": "CALL"
+            }
+        },
+        "stop_colleciton()string": {
+            "call_config": {
+                "no_op": "CALL"
+            }
+        },
+        "is_open()uint64": {
+            "call_config": {
+                "no_op": "CALL"
+            }
+        },
+        "get_data(uint64)(uint8,string)": {
+            "structs": {
+                "output": {
+                    "name": "CrowdSourcedData",
+                    "elements": [
+                        [
+                            "status",
+                            "uint8"
+                        ],
+                        [
+                            "data",
+                            "string"
+                        ]
+                    ]
+                }
+            },
+            "call_config": {
+                "no_op": "CALL"
+            }
+        },
+        "get_num_data()uint64": {
+            "call_config": {
+                "no_op": "CALL"
+            }
+        }
+    },
+    "source": {
+        "approval": "I3ByYWdtYSB2ZXJzaW9uIDgKaW50Y2Jsb2NrIDAgMQpieXRlY2Jsb2NrIDB4MTUxZjdjNzUgMHg2OTczNWY2ZjcwNjU2ZSAweDY0NjE3NDYxNWY2MzZmNzU2ZTc0NjU3MiAweAp0eG5hIEFwcGxpY2F0aW9uQXJncyAwCnB1c2hieXRlcyAweDRjNWM2MWJhIC8vICJjcmVhdGUoKXZvaWQiCj09CmJueiBtYWluX2wxMgp0eG5hIEFwcGxpY2F0aW9uQXJncyAwCnB1c2hieXRlcyAweGU3MmNkOWQxIC8vICJzdGFydF9jb2xsZWNpdG9uKClzdHJpbmciCj09CmJueiBtYWluX2wxMQp0eG5hIEFwcGxpY2F0aW9uQXJncyAwCnB1c2hieXRlcyAweGY1OGYyNzVkIC8vICJzdG9wX2NvbGxlY2l0b24oKXN0cmluZyIKPT0KYm56IG1haW5fbDEwCnR4bmEgQXBwbGljYXRpb25BcmdzIDAKcHVzaGJ5dGVzIDB4Yjk5OTkwMWYgLy8gImlzX29wZW4oKXVpbnQ2NCIKPT0KYm56IG1haW5fbDkKdHhuYSBBcHBsaWNhdGlvbkFyZ3MgMApwdXNoYnl0ZXMgMHgwNzQyN2I3OCAvLyAiZ2V0X2RhdGEodWludDY0KSh1aW50OCxzdHJpbmcpIgo9PQpibnogbWFpbl9sOAp0eG5hIEFwcGxpY2F0aW9uQXJncyAwCnB1c2hieXRlcyAweGMzMDdiMjgwIC8vICJnZXRfbnVtX2RhdGEoKXVpbnQ2NCIKPT0KYm56IG1haW5fbDcKZXJyCm1haW5fbDc6CnR4biBPbkNvbXBsZXRpb24KaW50Y18wIC8vIE5vT3AKPT0KdHhuIEFwcGxpY2F0aW9uSUQKaW50Y18wIC8vIDAKIT0KJiYKYXNzZXJ0CmNhbGxzdWIgZ2V0bnVtZGF0YV81CnN0b3JlIDQKYnl0ZWNfMCAvLyAweDE1MWY3Yzc1CmxvYWQgNAppdG9iCmNvbmNhdApsb2cKaW50Y18xIC8vIDEKcmV0dXJuCm1haW5fbDg6CnR4biBPbkNvbXBsZXRpb24KaW50Y18wIC8vIE5vT3AKPT0KdHhuIEFwcGxpY2F0aW9uSUQKaW50Y18wIC8vIDAKIT0KJiYKYXNzZXJ0CnR4bmEgQXBwbGljYXRpb25BcmdzIDEKYnRvaQpjYWxsc3ViIGdldGRhdGFfNApzdG9yZSAzCmJ5dGVjXzAgLy8gMHgxNTFmN2M3NQpsb2FkIDMKY29uY2F0CmxvZwppbnRjXzEgLy8gMQpyZXR1cm4KbWFpbl9sOToKdHhuIE9uQ29tcGxldGlvbgppbnRjXzAgLy8gTm9PcAo9PQp0eG4gQXBwbGljYXRpb25JRAppbnRjXzAgLy8gMAohPQomJgphc3NlcnQKY2FsbHN1YiBpc29wZW5fMwpzdG9yZSAyCmJ5dGVjXzAgLy8gMHgxNTFmN2M3NQpsb2FkIDIKaXRvYgpjb25jYXQKbG9nCmludGNfMSAvLyAxCnJldHVybgptYWluX2wxMDoKdHhuIE9uQ29tcGxldGlvbgppbnRjXzAgLy8gTm9PcAo9PQp0eG4gQXBwbGljYXRpb25JRAppbnRjXzAgLy8gMAohPQomJgphc3NlcnQKY2FsbHN1YiBzdG9wY29sbGVjaXRvbl8yCnN0b3JlIDEKYnl0ZWNfMCAvLyAweDE1MWY3Yzc1CmxvYWQgMQpjb25jYXQKbG9nCmludGNfMSAvLyAxCnJldHVybgptYWluX2wxMToKdHhuIE9uQ29tcGxldGlvbgppbnRjXzAgLy8gTm9PcAo9PQp0eG4gQXBwbGljYXRpb25JRAppbnRjXzAgLy8gMAohPQomJgphc3NlcnQKY2FsbHN1YiBzdGFydGNvbGxlY2l0b25fMQpzdG9yZSAwCmJ5dGVjXzAgLy8gMHgxNTFmN2M3NQpsb2FkIDAKY29uY2F0CmxvZwppbnRjXzEgLy8gMQpyZXR1cm4KbWFpbl9sMTI6CnR4biBPbkNvbXBsZXRpb24KaW50Y18wIC8vIE5vT3AKPT0KdHhuIEFwcGxpY2F0aW9uSUQKaW50Y18wIC8vIDAKPT0KJiYKYXNzZXJ0CmNhbGxzdWIgY3JlYXRlXzAKaW50Y18xIC8vIDEKcmV0dXJuCgovLyBjcmVhdGUKY3JlYXRlXzA6CnByb3RvIDAgMApieXRlY18yIC8vICJkYXRhX2NvdW50ZXIiCmludGNfMCAvLyAwCmFwcF9nbG9iYWxfcHV0CmJ5dGVjXzEgLy8gImlzX29wZW4iCmludGNfMCAvLyAwCmFwcF9nbG9iYWxfcHV0CnJldHN1YgoKLy8gc3RhcnRfY29sbGVjaXRvbgpzdGFydGNvbGxlY2l0b25fMToKcHJvdG8gMCAxCmJ5dGVjXzMgLy8gIiIKdHhuIFNlbmRlcgpnbG9iYWwgQ3JlYXRvckFkZHJlc3MKPT0KLy8gdW5hdXRob3JpemVkCmFzc2VydApieXRlY18xIC8vICJpc19vcGVuIgppbnRjXzEgLy8gMQphcHBfZ2xvYmFsX3B1dApwdXNoYnl0ZXMgMHgwMDFmNTM3NTYzNjM2NTczNzM2Njc1NmM2Yzc5MjA3Mzc0NjE3Mjc0NjU2NDIwNjM2ZjZjNmM2NTYzNzQ2OTZmNmUgLy8gMHgwMDFmNTM3NTYzNjM2NTczNzM2Njc1NmM2Yzc5MjA3Mzc0NjE3Mjc0NjU2NDIwNjM2ZjZjNmM2NTYzNzQ2OTZmNmUKZnJhbWVfYnVyeSAwCnJldHN1YgoKLy8gc3RvcF9jb2xsZWNpdG9uCnN0b3Bjb2xsZWNpdG9uXzI6CnByb3RvIDAgMQpieXRlY18zIC8vICIiCnR4biBTZW5kZXIKZ2xvYmFsIENyZWF0b3JBZGRyZXNzCj09Ci8vIHVuYXV0aG9yaXplZAphc3NlcnQKYnl0ZWNfMSAvLyAiaXNfb3BlbiIKaW50Y18wIC8vIDAKYXBwX2dsb2JhbF9wdXQKcHVzaGJ5dGVzIDB4MDAxZjUzNzU2MzYzNjU3MzczNjY3NTZjNmM3OTIwNzM3NDZmNzA3MDY1NjQyMDYzNmY2YzZjNjU2Mzc0Njk2ZjZlIC8vIDB4MDAxZjUzNzU2MzYzNjU3MzczNjY3NTZjNmM3OTIwNzM3NDZmNzA3MDY1NjQyMDYzNmY2YzZjNjU2Mzc0Njk2ZjZlCmZyYW1lX2J1cnkgMApyZXRzdWIKCi8vIGlzX29wZW4KaXNvcGVuXzM6CnByb3RvIDAgMQppbnRjXzAgLy8gMApieXRlY18xIC8vICJpc19vcGVuIgphcHBfZ2xvYmFsX2dldApmcmFtZV9idXJ5IDAKcmV0c3ViCgovLyBnZXRfZGF0YQpnZXRkYXRhXzQ6CnByb3RvIDEgMQpieXRlY18zIC8vICIiCmJ5dGVjXzIgLy8gImRhdGFfY291bnRlciIKYXBwX2dsb2JhbF9nZXQKZnJhbWVfZGlnIC0xCj4KYXNzZXJ0CmZyYW1lX2RpZyAtMQppdG9iCmJveF9nZXQKc3RvcmUgNgpzdG9yZSA1CmxvYWQgNgphc3NlcnQKbG9hZCA1CmZyYW1lX2J1cnkgMApyZXRzdWIKCi8vIGdldF9udW1fZGF0YQpnZXRudW1kYXRhXzU6CnByb3RvIDAgMQppbnRjXzAgLy8gMApieXRlY18yIC8vICJkYXRhX2NvdW50ZXIiCmFwcF9nbG9iYWxfZ2V0CmZyYW1lX2J1cnkgMApyZXRzdWI=",
+        "clear": "I3ByYWdtYSB2ZXJzaW9uIDgKcHVzaGludCAwIC8vIDAKcmV0dXJu"
+    },
+    "state": {
+        "global": {
+            "num_byte_slices": 0,
+            "num_uints": 2
+        },
+        "local": {
+            "num_byte_slices": 0,
+            "num_uints": 0
+        }
+    },
+    "schema": {
+        "global": {
+            "declared": {
+                "data_counter": {
+                    "type": "uint64",
+                    "key": "data_counter",
+                    "descr": "The price of the event. Default price is 1 Algo"
+                },
+                "is_open": {
+                    "type": "uint64",
+                    "key": "is_open",
+                    "descr": "0 means its closed, 1 means its open"
+                }
+            },
+            "reserved": {}
+        },
+        "local": {
+            "declared": {},
+            "reserved": {}
+        }
+    },
+    "contract": {
+        "name": "CrowdSourcingApp",
+        "methods": [
+            {
+                "name": "create",
+                "args": [],
+                "returns": {
+                    "type": "void"
+                },
+                "desc": "Deployes the contract and starts the application"
+            },
+            {
+                "name": "start_colleciton",
+                "args": [],
+                "returns": {
+                    "type": "string"
+                },
+                "desc": "Turn on the collection"
+            },
+            {
+                "name": "stop_colleciton",
+                "args": [],
+                "returns": {
+                    "type": "string"
+                },
+                "desc": "Turn off the collection"
+            },
+            {
+                "name": "is_open",
+                "args": [],
+                "returns": {
+                    "type": "uint64"
+                }
+            },
+            {
+                "name": "get_data",
+                "args": [
+                    {
+                        "type": "uint64",
+                        "name": "index"
+                    }
+                ],
+                "returns": {
+                    "type": "(uint8,string)"
+                }
+            },
+            {
+                "name": "get_num_data",
+                "args": [],
+                "returns": {
+                    "type": "uint64"
+                }
+            }
+        ],
+        "networks": {}
+    },
+    "bare_call_config": {}
+}

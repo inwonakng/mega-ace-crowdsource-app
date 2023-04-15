@@ -1,7 +1,7 @@
 # Demonstrate the sample contract in this directory by building, deploying and calling the contract
 import algokit_utils
 
-import crowdsource
+import crowdsourcing
 from build import build
 
 
@@ -24,12 +24,14 @@ def demo() -> None:
     # Deploy the app on-chain
     create_response = app_client.create()
     print(
-        f"""
-        Deployed app in txid {create_response.tx_id}
+        f"""Deployed app in txid {create_response.tx_id}
         App ID: {app_client.app_id} 
         Address: {app_client.app_address} 
-        """
+    """
     )
+
+    call_response = app_client.call(crowdsourcing.start_colleciton, )
+    print(call_response.return_value)
 
     # Call the `hello` method
     # call_response = app_client.call(helloworld.hello, name="Beaker")

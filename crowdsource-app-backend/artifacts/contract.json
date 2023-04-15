@@ -1,0 +1,56 @@
+{
+    "name": "CrowdSourcingApp",
+    "methods": [
+        {
+            "name": "create",
+            "args": [],
+            "returns": {
+                "type": "void"
+            },
+            "desc": "Deployes the contract and starts the application"
+        },
+        {
+            "name": "start_colleciton",
+            "args": [],
+            "returns": {
+                "type": "string"
+            },
+            "desc": "Turn on the collection"
+        },
+        {
+            "name": "stop_colleciton",
+            "args": [],
+            "returns": {
+                "type": "string"
+            },
+            "desc": "Turn off the collection"
+        },
+        {
+            "name": "is_open",
+            "args": [],
+            "returns": {
+                "type": "uint64"
+            }
+        },
+        {
+            "name": "get_data",
+            "args": [
+                {
+                    "type": "uint64",
+                    "name": "index"
+                }
+            ],
+            "returns": {
+                "type": "(uint8,string)"
+            }
+        },
+        {
+            "name": "get_num_data",
+            "args": [],
+            "returns": {
+                "type": "uint64"
+            }
+        }
+    ],
+    "networks": {}
+}
