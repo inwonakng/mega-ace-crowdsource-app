@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@algorandfoundation/algokit-utils": "^1.0.0",
     "@blockshake/defly-connect": "^1.1.2",
     "@json-rpc-tools/utils": "^1.7.6",
     "@perawallet/connect": "^1.2.3",
@@ -14,6 +15,7 @@
     "@walletconnect/client": "^1.8.0",
     "algorand-walletconnect-qrcode-modal": "^1.8.0",
     "algosdk": "^2.2.0",
+    "beaker-ts": "^0.1.2",
     "bootstrap": "^5.2.3",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.4",

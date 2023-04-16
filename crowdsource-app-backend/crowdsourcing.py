@@ -22,7 +22,7 @@ class CrowdSourcingAppState:
     collected_data = BoxMapping(
         # pt.abi.String, 
         pt.abi.Uint64,
-        CrowdSourcedData
+        CrowdSourcedData,
     )
 
     # only the creator can change this value, whether to close or open the collection

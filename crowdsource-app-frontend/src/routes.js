@@ -1,18 +1,36 @@
 import HomePage from "./pages/HomePage";
-import WalletConnectPage from "./pages/WalletSetupPage";
+import DataViewPage from './pages/DataViewPage'
+import WalletConnectPage from "./pages/WalletConnectPage";
+import CreatorPage from "./pages/CreatorPage";
+import DataSubmitPage from "./pages/DataSubmitPage";
 
 
 const routes = [
   {
-    path: 'home',
+    path: '/',
     name: 'Home',
-    element: HomePage,
+    element: <HomePage/>,
   },
   {
-    path: 'connect-wallet',
+    path: '/submit-data',
+    name: 'Submit New Data',
+    element: <DataSubmitPage/>, 
+  },
+  {
+    path: '/view-data',
+    name: 'View Collected Data',
+    element: <DataViewPage/>, 
+  },
+  {
+    path: '/creator-menu',
+    name: 'Creator Menu',
+    element: <CreatorPage/>
+  },
+  {
+    path: '/connect-wallet',
     name: 'Connect Wallet',
-    element: WalletConnectPage
-  }
+    element: <WalletConnectPage/>
+  },
 ]
 
 
