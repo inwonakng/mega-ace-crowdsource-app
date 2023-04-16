@@ -56,9 +56,11 @@ const DataViewPage = () => {
 
     const result = await algosdk.waitForConfirmation(algodClient, id, waitRoundsToConfirm)
 
-    console.log(result)
-
-    dispatch(setNumDataCollected(Number(parseResultLog(result))))
+    // console.log(result)
+    const resultVal = Number(parseResultLog(result))
+    console.log(resultVal)
+    
+    dispatch(setNumDataCollected(resultVal))
   }
 
   const donateAlgo = async () => {
@@ -86,8 +88,9 @@ const DataViewPage = () => {
 
   const getData = async () => {
     const res = await algodClient.getApplicationBoxByName(applicationId, algosdk.encodeUint64(Number(state.dataIndex))).do()
-    let decoded = Buffer.from(res.value).toString('base64').slice(4)
-    setState({ ...state, dataResult: decoded, showDataViewModal:false })
+    let decoded = Buffer.from(res.value).toString('base64')
+    console.log(decoded)
+    setState({ ...state, dataResult: decoded.slice(4), showDataViewModal:false })
   }
 
   return (

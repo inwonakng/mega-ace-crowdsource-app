@@ -6,7 +6,8 @@ const stateSlice = createSlice({
       isCollectionOpen: false,
       numDataCollected: -1,
       showDonationThanksModal: false, 
-
+      submissionSuccess: false, 
+      submissionError: false, 
     },
     reducers: {
         setIsCollectionOpen: (state, action) => {
@@ -18,6 +19,12 @@ const stateSlice = createSlice({
         setShowDonationThanksModal: (state, action) => {
           state.showDonationThanksModal= action.payload
         },
+        setSubmissionSuccess: (state, action) => {
+          state.submissionSuccess = action.payload
+        },
+        setSubmissionError: (state, action) => {
+          state.submissionError = action.payload
+        }
     }
 
 })
@@ -25,6 +32,8 @@ const stateSlice = createSlice({
 export const { 
   setIsCollectionOpen,
   setNumDataCollected,
-  setShowDonationThanksModal
+  setShowDonationThanksModal,
+  setSubmissionSuccess,
+  setSubmissionError
 } = stateSlice.actions
 export default stateSlice.reducer

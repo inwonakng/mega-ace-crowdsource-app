@@ -12,16 +12,22 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import { numToUint8, parseResultLog, stringToUint8 } from "../helper";
 import { applicationId } from "..";
-import { setIsCollectionOpen } from "../redux/stateSlice";
+import { setIsCollectionOpen, setSubmissionError, setSubmissionSuccess } from "../redux/stateSlice";
 
 
 const DataSubmitPage = () => {
   const [state, setState] = useState({ inputData: '', showIsOpenModal: false })
 
   const [
-    isCollectionOpen
+    isCollectionOpen,
+    submissionSuccess,
+    numDataCollected,
+    submissionError
   ] = useSelector((store) => [
-    store.state.isCollectionOpen
+    store.state.isCollectionOpen,
+    store.state.submissionSuccess,
+    store.state.numDataCollected,
+    store.state.submissionError
   ])
 
   const dispatch = useDispatch()
@@ -63,7 +69,15 @@ const DataSubmitPage = () => {
   }
 
   const onSubmitData = async () => {
+    if(numDataCollected === -1){
+      dispatch(setSubmissionError(true))
+      setTimeout(() => dispatch(setSubmissionError(false)), 3000)
+      return
+    }
+
+
     const suggestedParams = await algodClient.getTransactionParams().do()
+    console.log(numDataCollected)
     const transaction = algosdk.makeApplicationCallTxnFromObject({
       appArgs: [stringToUint8('JautJA=='), stringToUint8(state.inputData)],
       appIndex: applicationId,
@@ -73,7 +87,7 @@ const DataSubmitPage = () => {
       boxes: [
         {
           appIndex: applicationId,
-          name: algosdk.encodeUint64(2)
+          name: algosdk.encodeUint64(numDataCollected)
         }
       ]
 
@@ -83,12 +97,14 @@ const DataSubmitPage = () => {
     const waitRoundsToConfirm = 5
     const { id } = await sendTransactions(signedTransactions, waitRoundsToConfirm)
     console.log('Transaction sent successfully', id)
-    const result = await algosdk.waitForConfirmation(algodClient, id, waitRoundsToConfirm)
-    console.log(result)
+    // const result = await 
+    algosdk.waitForConfirmation(algodClient, id, waitRoundsToConfirm).then(
+      () => {
+        dispatch(setSubmissionSuccess(true))
+        setTimeout(()=> dispatch(setSubmissionSuccess(false)), 3000)  
+    })
+    // console.log(result)
   }
-
-
-
 
   return (
     <>
@@ -129,6 +145,22 @@ const DataSubmitPage = () => {
           {isCollectionOpen
             ? `Collection is open! 👐`
             : `Collection is closed 😥 Check again in the future!`}
+        </Modal.Body>
+      </Modal>
+      <Modal 
+        show={submissionError}
+        onHide={()=>dispatch(setSubmissionError(false))}
+      >
+        <Modal.Body>
+          Please sync the number of data points before you submit!
+        </Modal.Body>
+      </Modal>
+      <Modal 
+        show={submissionSuccess}
+        onHide={()=>dispatch(setSubmissionSuccess(false))}
+      >
+        <Modal.Body>
+          Submitted Successfully!
         </Modal.Body>
       </Modal>
     </>

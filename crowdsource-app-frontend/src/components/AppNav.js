@@ -1,8 +1,8 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
-import routes from '../routes'
+import {routes} from '..'
+import { Link } from 'react-router-dom';
 
 function AppNav() {
   return (
@@ -15,34 +15,14 @@ function AppNav() {
             {
               routes.map(route => 
                 <Nav.Link 
-                  href={route.path}
+                  to={route.path}
                   key = {route.name}
+                  as={Link}
                 >
                   {route.name}
                 </Nav.Link> 
               )
             }
-            {/* <Nav.Link href='/'>
-              Home
-            </Nav.Link>
-            
-            <NavDropdown title='Data Menu'>
-              <NavDropdown.Item href='/view-data'>
-                View Collected Data
-              </NavDropdown.Item>
-              <NavDropdown.Item href='/submit-data'>
-                Submit Data
-              </NavDropdown.Item>
-            </NavDropdown>
-            
-            <Nav.Link href='/creator-menu'>
-              Creator Menu
-            </Nav.Link>
-
-            <Nav.Link href='/connect-wallet'>
-              Connect Wallet
-            </Nav.Link> */}
-
           </Nav>
         </Navbar.Collapse>
       </Container>
