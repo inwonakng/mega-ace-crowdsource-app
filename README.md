@@ -28,3 +28,4 @@ This directory contains the code for the React application. `NPM == 8.5.0`  and 
 #### Running the project
 To run the application locally, the dependencies of the proejct should be installed by running `yarn install` or `npm install` inside the root directory of the frontend proejct. Then you can run `yarn start` or `npm run start` in the root folder of the frontend directory to start the application. To test integration with a different version of a deployed contract, the values of the creator's account, deployed contract account and deployed contract id must be updated in `index.js` of the `src` folder. 
 
+Alternatively, a live version of the website is avaiable [here](https://mega-ace-crowdsource-app.vercel.app/). Google chrome is recommended for the best experience.
