@@ -60,10 +60,16 @@ const CreatorPage = () => {
   }
 
   return (
-    <>
-      <Row>
-        <h2>CreatorPage</h2>
-      </Row>
+
+    <Row>
+    <Col md={{ span: 6, offset: 3 }}>
+      
+      <h2 style={{marginBottom:'40px'}}>Creator console</h2>
+
+      <p style={{marginBottom:'40px'}}>
+        Only the creator of the contract -- owner of the account that deployed the contract -- can access these settings. 
+      </p>
+
       <Row style={{ marginBottom: '15px' }}> 
         <Col md={{span: 6, offset: 3}}>
           <Row>
@@ -82,7 +88,9 @@ const CreatorPage = () => {
           </Row>
         </Col>
       </Row>
-    </>
+      </Col>
+      </Row>
+    
   )
 }
 

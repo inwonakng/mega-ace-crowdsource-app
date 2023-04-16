@@ -3,6 +3,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import AppWalletProvider from './components/AppWalletProvider';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Provider } from 'react-redux';
+import store from './redux/store';
 
 import routes from './routes'
 import AppNav from './components/AppNav';
@@ -23,10 +25,12 @@ const router = createBrowserRouter(
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <AppWalletProvider>
-    <AppNav/>
-    <Layout>
-      <RouterProvider router={router}/>
-    </Layout>
-  </AppWalletProvider>
+  <Provider store={store}>
+    <AppWalletProvider>
+      <AppNav/>
+      <Layout>
+        <RouterProvider router={router}/>
+      </Layout>
+    </AppWalletProvider>
+  </Provider>
 );

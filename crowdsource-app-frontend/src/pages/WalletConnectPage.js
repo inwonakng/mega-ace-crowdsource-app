@@ -16,8 +16,7 @@ const WalletConnectPage = () => {
     <Row >
       <Col md={{ span: 6, offset: 3 }}>
         <Row className='justify-content-md-center'>
-          <h2>Connect your wallet!</h2>
-          <br />
+          <h2 style={{marginBottom:'40px'}}>Connect your wallet!</h2>
           {providers?.map((provider) => (
             <Row
               style={{
