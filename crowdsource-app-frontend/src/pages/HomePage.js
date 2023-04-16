@@ -4,7 +4,7 @@ const HomePage = () => {
       <h2>Decentralized Crowdsourcing on Algorand</h2>
 
       <p>
-        Crowdsourced data plays an important role in advanceing machine learning technologies. Without the power of large datasets, many great findings in machine learning would not have been possible. 
+        Crowdsourced data plays an important role in advancing machine learning technologies. Without the power of large datasets, many great findings in machine learning would not have been possible. 
 
       </p>
       <p>
@@ -29,7 +29,7 @@ const HomePage = () => {
       </p>
 
       <p>
-        Note: This app is a prototype buit in 2 days. Some funcitonalities are not quite flushed out yet, but it can certainly be made more improved in the future using existing Algorand APIs.
+        Note: This app is a prototype built in 2 days. Some funcitonalities are not quite flushed out yet, but it can certainly be made more improved in the future using existing Algorand APIs.
       </p>
     </>
   )
