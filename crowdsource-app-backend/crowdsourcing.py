@@ -13,7 +13,6 @@ class CrowdSourcingAppState:
     # store the length of the collected data
     data_counter = beaker.GlobalStateValue(
         stack_type = pt.TealType.uint64,
-        # default=pt.Int(1_000_000),
         default = pt.Int(0),
         descr = "The price of the event. Default price is 1 Algo",
     )
@@ -43,7 +42,6 @@ def create():
     """Deployes the contract and starts the application"""
     return pt.Seq(
         app.initialize_global_state(),
-        # app.state.collected_data.create(),
     )
 
 # Owner methods
@@ -69,9 +67,12 @@ def submit_data(new_data: pt.abi.String, *, output: pt.abi.String) -> pt.Expr:
     return pt.Seq(
         # only accept if the flag is set to true
         pt.Assert(app.state.is_open == pt.Int(1)),
+        # pt.Assert(app.state.data_counter )
         (status := pt.abi.Uint8()).set(pt.Int(0)),
         (submitted_data := CrowdSourcedData()).set(status, new_data),
+        # (new_data_idx := pt.abi.String()).set(pt.Ioapp.state.data_counter),
         # (new_data_idx := pt.abi.Uint64()).set(app.state.data_counter),
+        # app.state.collected_data[new_data_idx].set(submitted_data),
         app.state.collected_data[pt.Itob(app.state.data_counter)].set(submitted_data),
         app.state.data_counter.set(app.state.data_counter + pt.Int(1)),
         output.set('Successfully submited data!')

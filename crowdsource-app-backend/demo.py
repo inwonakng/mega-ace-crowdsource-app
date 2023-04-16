@@ -78,6 +78,21 @@ def demo() -> None:
 
 
 
+    app_client.call(
+        crowdsourcing.submit_data,
+        new_data = 'Wow! yet another new data in string form',
+        boxes = [(app_client.app_id, 2)]
+    )
+
+
+    print('we wrote to box!')
+
+    got_data = app_client.call(
+        crowdsourcing.get_data,
+        index=2,
+        boxes = [(app_client.app_id, 2)]
+    )
+    print(f'we got {got_data.return_value} back!')
 
 if __name__ == "__main__":
     demo()

@@ -14,7 +14,10 @@ function AppNav() {
           <Nav className="me-auto">
             {
               routes.map(route => 
-                <Nav.Link href={route.path}>
+                <Nav.Link 
+                  href={route.path}
+                  key = {route.name}
+                >
                   {route.name}
                 </Nav.Link> 
               )

@@ -7,12 +7,40 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Form from 'react-bootstrap/Form'
 import { useState } from "react";
-import { parseResultLog, stringToUint8 } from "../helper";
+import { numToUint8, parseResultLog, stringToUint8 } from "../helper";
 import { applicationId } from "..";
 
 const DataSubmitPage = () => {
-  const [state, setState] = useState({inputData: ''})
+  const [state, setState] = useState({inputData: '', isOpen:null})
   const { activeAddress, signTransactions, sendTransactions } = useWallet()
+
+
+  const isOpen = async () => {
+    const suggestedParams = await algodClient.getTransactionParams().do()
+    const transaction = algosdk.makeApplicationCallTxnFromObject({
+      appArgs: [stringToUint8('uZmQHw==')],
+      appIndex: applicationId,
+      from: activeAddress,
+      suggestedParams: suggestedParams,
+      onComplete: 0,
+    })
+    const encodedTransaction = algosdk.encodeUnsignedTransaction(transaction)
+    const signedTransactions = await signTransactions([encodedTransaction])
+    const waitRoundsToConfirm = 5
+    const { id } = await sendTransactions(signedTransactions, waitRoundsToConfirm)
+
+    console.log('Transaction sent successfully', id)
+
+    const result = await algosdk.waitForConfirmation(algodClient, id, waitRoundsToConfirm)
+
+
+    console.log(result)
+
+    setState({
+      ...state,
+      isOpen: Number(parseResultLog(result)) !== 0
+    })
+  }
 
   const onInputChange = (val) => {
     // console.log(val)
@@ -21,11 +49,6 @@ const DataSubmitPage = () => {
   }
 
   const onSubmitData = async () => {
-    // alert(state.inputData)
-
-    // const boxnames = await algodClient.getApplicationBoxes(applicationId).do()
-    // console.log(boxnames)
-    // return 
     const suggestedParams = await algodClient.getTransactionParams().do()
     const transaction = algosdk.makeApplicationCallTxnFromObject({
       appArgs: [stringToUint8('JautJA=='), stringToUint8(state.inputData)],
@@ -36,9 +59,7 @@ const DataSubmitPage = () => {
       boxes: [
         {
           appIndex: applicationId,
-          // name: new Uint8Array(0)
-          name: new Uint8Array([])
-          // stringToUint8('0')
+          name: algosdk.encodeUint64(2)
         }
       ]
 
@@ -48,16 +69,9 @@ const DataSubmitPage = () => {
     const waitRoundsToConfirm = 5
     const { id } = await sendTransactions(signedTransactions, waitRoundsToConfirm)
     console.log('Transaction sent successfully', id) 
-
     const result = await algosdk.waitForConfirmation(algodClient, id, waitRoundsToConfirm)
-
-    // console.log(result)
-
-    // setState({
-    //   ...state, 
-    //   numCollected: Number(parseResultLog(result))
-    // })
-  }
+    console.log(result)
+  } 
 
 
 
@@ -67,8 +81,24 @@ const DataSubmitPage = () => {
     DataSubmitPage
       <Row>
         <Col md={{span: 6, offset: 3}}>
+        <Row style={{ marginBottom: '15px' }}>
+            <Button onClick={isOpen} variant='light'>
+              Check if collection is open
+            </Button>
+          </Row>
+          {
+            state.isOpen !== null
+              ? <Row>
+                {
+                  state.isOpen
+                    ? `Collection is open :)`
+                    : `Collection is stopped :(`
+                }
+              </Row>
+              : <></>
+          }
           <Row style={{ marginBottom: '15px' }}>
-            <input placeholder="paste your JSON data here" onChange={onInputChange}>
+            <input placeholder="paste your raw JSON data here" onChange={onInputChange}>
             </input>
 
           </Row>

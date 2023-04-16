@@ -15,6 +15,8 @@ const CreatorPage = () => {
   const { activeAddress, signTransactions, sendTransactions } = useWallet();
 
   const startCollection = async () => {
+    // console.log(stringToUint8('4Wu55g=='))
+
     if (activeAddress !== creatorAddress){
       alert('only the creator of the contract can do this operation!')
       return 
@@ -31,6 +33,8 @@ const CreatorPage = () => {
     const waitRoundsToConfirm = 5
     const { id } = await sendTransactions(signedTransactions, waitRoundsToConfirm)
     console.log('Transaction sent successfully', id)
+    const result = await algosdk.waitForConfirmation(algodClient, id, waitRoundsToConfirm)
+    console.log(result)
   }
 
   const stopCollection = async () => {
@@ -50,6 +54,9 @@ const CreatorPage = () => {
     const waitRoundsToConfirm = 5
     const { id } = await sendTransactions(signedTransactions, waitRoundsToConfirm)
     console.log('Transaction sent successfully', id)
+    const result = await algosdk.waitForConfirmation(algodClient, id, waitRoundsToConfirm)
+    console.log(result)
+    console.log(algosdk.decodeObj(result))
   }
 
   return (
