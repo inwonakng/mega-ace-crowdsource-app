@@ -10,7 +10,7 @@ Our application supports 6 different types of algorand wallets, and can be acces
 ## Project Layout
 
 [crowdsource-app-backend](crowdsource-app-backend)
-This directory contains the code for the Beaker application, as well as the code for compiling/testing on a local network. To run this project, one should refer to [this guide](https://developer.algorand.org/algokit/) to install the necessary dependencies. Ones algokit is installed, the rest of the application dependencies can be installed in a python virtual environment (Python version must be higher than 3.10) or install in their local environment. 
+This directory contains the code for the Beaker application, as well as the code for compiling/testing on a local network. To run this project, one should refer to [this guide](https://developer.algorand.org/docs/get-started/algokit/) to install the necessary dependencies. Ones algokit is installed, the rest of the application dependencies can be installed in a python virtual environment (Python version must be higher than 3.10) or install in their local environment. 
 
 To just compile the project, one can run `python build.py`, which will populate the `artifacts` folder with necessary files. To test the project as well as building, one can run `python demo.py` to witness the application's basic functionalities by observing the output on the terminal.
 
